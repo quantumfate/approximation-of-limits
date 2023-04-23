@@ -1,5 +1,13 @@
 # approximation-of-limits
 
+## Requirements
+
+### Pip packages
+
+- [numpy](https://pypi.org/project/numpy/)
+- [math](https://pypi.org/project/python-math/)
+- [matplotlib](https://matplotlib.org/stable/index.html)
+
 ## Approximation of limits for functions based on n
 
 ### f_1
