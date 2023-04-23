@@ -2,6 +2,7 @@
 This module provides functions to find the n for an
 approximation on a limit.
 """
+import cmath
 import math
 import os
 
@@ -40,8 +41,17 @@ class NSequence:
             result = _numerator / _denominator
         except ZeroDivisionError:
             print("Error: Division by zero is not allowed.")
+            result = 0
 
         return result
+
+    @staticmethod
+    def power(base, exponent):
+        """
+        Calculates the power of a given base by a given exponent.
+        Useful for negative exponents.
+        """
+        return cmath.exp(exponent * cmath.log(base))
 
     def f_1(self, _n) -> float:
         """
@@ -51,7 +61,12 @@ class NSequence:
         """
         _numerator = 2
         _denominator = 3
-        return math.pow(self.safely_divide(_numerator, _denominator), _n)
+        _base = self.safely_divide(_numerator, _denominator)
+
+        if _n >= 0:
+            return math.pow(_base, _n)
+
+        return self.power(_base, _n)
 
     def f_2(self, _n) -> float:
         """
@@ -60,7 +75,9 @@ class NSequence:
         n (int or float): n
         """
         _numerator = math.pow(_n, 3)
-        _denominator = math.pow(2, _n)
+        if _n >= 0:
+            _denominator = math.pow(2, _n)
+        _denominator = self.power(2, _n)
         return self.safely_divide(_numerator, _denominator)
 
     def f_3(self, _n) -> float:
@@ -71,7 +88,10 @@ class NSequence:
         """
         _numerator = _n + 1
         _denominator = _n
-        return math.pow(self.safely_divide(_numerator, _denominator), _n)
+        _base = self.safely_divide(_numerator, _denominator)
+        if _n >= 0:
+            return math.pow(_base, _n)
+        return self.power(_base, _n)
 
     def f_4(self, _n) -> float:
         """
@@ -80,8 +100,11 @@ class NSequence:
         n (int or float): n
         """
         _numerator = 5
-        _denomnitator = _n
-        return math.pow(1 + (self.safely_divide(_numerator, _denomnitator)), _n)
+        _denominator = _n
+        _base = self.safely_divide(_numerator, _denominator)
+        if _n >= 0:
+            return math.pow(1 + _base, _n)
+        return self.power(1 + _base, _n)
 
     fn_to_string_dict = {
         "f_1": f_1_string,

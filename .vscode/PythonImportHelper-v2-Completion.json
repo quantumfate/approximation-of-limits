@@ -17,6 +17,15 @@
         "documentation": {}
     },
     {
+        "label": "cmath",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cmath",
+        "description": "cmath",
+        "detail": "cmath",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
