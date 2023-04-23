@@ -1,0 +1,20 @@
+[
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "NSequence",
+        "kind": 6,
+        "importPath": "n_sequence",
+        "description": "n_sequence",
+        "peekOfCode": "class NSequence:\n    \"\"\"\n    Provides methods to calculate sequences on a given n.\n    Also evaluates the approximation on the limit of each function.\n    \"\"\"\n    def f_1(self, _n) -> float:\n        \"\"\"\n        Calculates a sequence on n. f_n = (2/3)^n\\n\n        Parameters:\n        n (int or float): n",
+        "detail": "n_sequence",
+        "documentation": {}
+    }
+]
