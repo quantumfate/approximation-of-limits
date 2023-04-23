@@ -26,14 +26,6 @@
         "documentation": {}
     },
     {
-        "label": "Callable",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "matplotlib.pyplot",
         "kind": 6,
         "isExtraImport": true,
@@ -69,11 +61,20 @@
         "documentation": {}
     },
     {
+        "label": "n_seq",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "n_seq = NSequence()\nn_seq.plot_function(\"f_1\", 1, 160)\nn_seq.plot_function(\"f_2\", 1, 160)\nn_seq.plot_function(\"f_3\", 1, 160)\nn_seq.plot_function(\"f_4\", 1, 260)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "NSequence",
         "kind": 6,
         "importPath": "n_sequence",
         "description": "n_sequence",
-        "peekOfCode": "class NSequence:\n    \"\"\"\n    Provides methods to calculate sequences on a given n.\n    Also evaluates the approximation on the limit of each function.\n    \"\"\"\n    current_file = os.path.abspath(__file__)\n    current_dir = os.path.dirname(current_file)\n    out_folder = \"/out/n_sequence/\"\n    f_1_string_tex = r\"$f(n) = (\\frac {2} {3})^n$\"\n    f_2_string_tex = r\"$f(n) = (\\frac {n³} {2^n})$\"",
+        "peekOfCode": "class NSequence:\n    \"\"\"\n    Provides methods to calculate sequences on a given n.\n    Also evaluates the approximation on the limit of each function.\n    \"\"\"\n    current_file = os.path.abspath(__file__)\n    current_dir = os.path.dirname(current_file)\n    out_folder = \"out/n_sequence/\"\n    f_1_string_tex = r\"$f(n) = (\\frac {2} {3})^n$\"\n    f_2_string_tex = r\"$f(n) = (\\frac {n³} {2^n})$\"",
         "detail": "n_sequence",
         "documentation": {}
     }
