@@ -123,6 +123,8 @@ class NSequence:
         "f_4": f_4_string_tex,
     }
 
+    critical_points = {"f_3": [0], "f_4": [0]}
+
     def plot_function(
         self, _function_name: str, x_min: int, x_max: int, num_points=1000
     ) -> void:
@@ -132,6 +134,13 @@ class NSequence:
         """
         _function = getattr(self, _function_name)
         x_values = np.linspace(x_min, x_max, num_points)
+        # Map function names to their critical points
+
+        # Add the critical points for the given function
+        if _function_name in self.critical_points:
+            x_values = np.unique(
+                np.concatenate([x_values, self.critical_points[_function_name]])
+            )
         y_values = np.array([_function(_n) for _n in x_values], dtype=object)
 
         y_values[y_values is None] = np.nan
