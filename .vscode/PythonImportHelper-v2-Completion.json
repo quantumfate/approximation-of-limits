@@ -53,6 +53,14 @@
         "documentation": {}
     },
     {
+        "label": "mat",
+        "importPath": "numpy",
+        "description": "numpy",
+        "isExtraImport": true,
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
         "label": "void",
         "importPath": "numpy",
         "description": "numpy",
@@ -74,7 +82,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "n_seq = NSequence()\nn_seq.plot_function(\"f_1\", 1, 160)\nn_seq.plot_function(\"f_2\", 1, 160)\nn_seq.plot_function(\"f_3\", 1, 160)\nn_seq.plot_function(\"f_4\", 1, 260)\n# fibonacci",
+        "peekOfCode": "n_seq = NSequence()\n# n_seq.plot_function(\"f_1\", -100, 160)\n# n_seq.plot_function(\"f_2\", -100, 160)\nn_seq.plot_function(\"f_3\", -100, 160)\n# n_seq.plot_function(\"f_4\", -100, 260)\n# fibonacci",
         "detail": "main",
         "documentation": {}
     },

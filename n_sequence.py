@@ -8,7 +8,7 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import void
+from numpy import mat, void
 
 
 class NSequence:
@@ -45,13 +45,16 @@ class NSequence:
 
         return result
 
-    @staticmethod
-    def power(base, exponent):
+    def power(self, base, exponent) -> float:
         """
         Calculates the power of a given base by a given exponent.
         Useful for negative exponents.
         """
-        return cmath.exp(exponent * cmath.log(base))
+        if exponent >= 0:
+            return math.pow(base, exponent)
+
+        denominator = math.pow(base, abs(exponent))
+        return self.safely_divide(1, denominator)
 
     def f_1(self, _n) -> float:
         """
@@ -62,10 +65,6 @@ class NSequence:
         _numerator = 2
         _denominator = 3
         _base = self.safely_divide(_numerator, _denominator)
-
-        if _n >= 0:
-            return math.pow(_base, _n)
-
         return self.power(_base, _n)
 
     def f_2(self, _n) -> float:
@@ -74,9 +73,7 @@ class NSequence:
         Parameters:
         n (int or float): n
         """
-        _numerator = math.pow(_n, 3)
-        if _n >= 0:
-            _denominator = math.pow(2, _n)
+        _numerator = self.power(_n, 3)
         _denominator = self.power(2, _n)
         return self.safely_divide(_numerator, _denominator)
 
@@ -89,21 +86,17 @@ class NSequence:
         _numerator = _n + 1
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
-        if _n >= 0:
-            return math.pow(_base, _n)
         return self.power(_base, _n)
 
     def f_4(self, _n) -> float:
         """
-        Calculates a sequence on n. f_n = (1+(5/n))^n\n
+        Calculates a sequence on n. f_n = (1+5/n)^n\n
         Parameters:
         n (int or float): n
         """
         _numerator = 5
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
-        if _n >= 0:
-            return math.pow(1 + _base, _n)
         return self.power(1 + _base, _n)
 
     fn_to_string_dict = {
