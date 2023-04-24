@@ -1,11 +1,26 @@
 [
     {
-        "label": "math",
-        "kind": 6,
+        "label": "Number",
+        "importPath": "numbers",
+        "description": "numbers",
         "isExtraImport": true,
-        "importPath": "math",
-        "description": "math",
-        "detail": "math",
+        "detail": "numbers",
+        "documentation": {}
+    },
+    {
+        "label": "Number",
+        "importPath": "numbers",
+        "description": "numbers",
+        "isExtraImport": true,
+        "detail": "numbers",
+        "documentation": {}
+    },
+    {
+        "label": "Fibonacci",
+        "importPath": "fibonacci",
+        "description": "fibonacci",
+        "isExtraImport": true,
+        "detail": "fibonacci",
         "documentation": {}
     },
     {
@@ -32,14 +47,6 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "Number",
-        "importPath": "numbers",
-        "description": "numbers",
-        "isExtraImport": true,
-        "detail": "numbers",
         "documentation": {}
     },
     {
@@ -73,7 +80,7 @@
         "kind": 6,
         "importPath": "fibonacci",
         "description": "fibonacci",
-        "peekOfCode": "class Fibonacci:\n    \"\"\"\n    Provides methods to calculate and evaluate the\n    Fibonacci sequence.\n    \"\"\"\n    def fibonacci(self, _n) -> float:\n        return 0.0",
+        "peekOfCode": "class Fibonacci:\n    \"\"\"\n    Provides methods to calculate and evaluate the\n    Fibonacci sequence.\n    \"\"\"\n    def fibonacci(self, _n: int) -> int:\n        \"\"\"Calculates the fibonacci sequence based on n\n        _n -- the end of sequence\n        Return: the last computed number of the sequence\n        \"\"\"",
         "detail": "fibonacci",
         "documentation": {}
     },
@@ -82,7 +89,34 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "n_seq = NSequence()\nn_seq.plot_function(\"f_1\", -100, 160)\nn_seq.plot_function(\"f_2\", -100, 160)\nn_seq.plot_function(\"f_3\", -100, 160)\nn_seq.plot_function(\"f_4\", -100, 260)\n# fibonacci",
+        "peekOfCode": "n_seq = NSequence()\nn_seq.plot_function(\"f_1\", -100, 160)\nn_seq.plot_function(\"f_2\", -100, 160)\nn_seq.plot_function(\"f_3\", -100, 160)\nn_seq.plot_function(\"f_4\", -100, 260)\n# fibonacci\nfib_seq = Fibonacci()\nN_PERCENT = fib_seq.find_relative_error(0.01)\nN_PERMILLE = fib_seq.find_relative_error(0.001)\nprint(",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "fib_seq",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "fib_seq = Fibonacci()\nN_PERCENT = fib_seq.find_relative_error(0.01)\nN_PERMILLE = fib_seq.find_relative_error(0.001)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1% are:\",\n    N_PERCENT,\n    N_PERCENT + 1,\n)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1 permille are:\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "N_PERCENT",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "N_PERCENT = fib_seq.find_relative_error(0.01)\nN_PERMILLE = fib_seq.find_relative_error(0.001)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1% are:\",\n    N_PERCENT,\n    N_PERCENT + 1,\n)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1 permille are:\",\n    N_PERMILLE,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "N_PERMILLE",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "N_PERMILLE = fib_seq.find_relative_error(0.001)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1% are:\",\n    N_PERCENT,\n    N_PERCENT + 1,\n)\nprint(\n    \"The first two Fibonacci numbers with relative error less than 1 permille are:\",\n    N_PERMILLE,\n    N_PERMILLE + 1,",
         "detail": "main",
         "documentation": {}
     },

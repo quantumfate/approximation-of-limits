@@ -33,3 +33,8 @@
 - `n ~ 250`
 
 ![Function 1](/out/n_sequence/f_4.png)
+
+## Fibonacci
+
+- The first two Fibonacci numbers with relative error less than 1% are: 6 7
+- The first two Fibonacci numbers with relative error less than 1 permille are: 8 9
