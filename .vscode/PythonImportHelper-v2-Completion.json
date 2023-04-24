@@ -35,22 +35,6 @@
         "documentation": {}
     },
     {
-        "label": "Num",
-        "importPath": "ast",
-        "description": "ast",
-        "isExtraImport": true,
-        "detail": "ast",
-        "documentation": {}
-    },
-    {
-        "label": "label",
-        "importPath": "cProfile",
-        "description": "cProfile",
-        "isExtraImport": true,
-        "detail": "cProfile",
-        "documentation": {}
-    },
-    {
         "label": "Number",
         "importPath": "numbers",
         "description": "numbers",
@@ -73,14 +57,6 @@
         "isExtraImport": true,
         "importPath": "numpy",
         "description": "numpy",
-        "detail": "numpy",
-        "documentation": {}
-    },
-    {
-        "label": "mat",
-        "importPath": "numpy",
-        "description": "numpy",
-        "isExtraImport": true,
         "detail": "numpy",
         "documentation": {}
     },

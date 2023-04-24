@@ -3,15 +3,12 @@ This module provides functions to find the n for an
 approximation on a limit.
 """
 import cmath
-import math
 import os
-from ast import Num
-from cProfile import label
 from numbers import Number
 
 import matplotlib.pyplot as plt
 import numpy as np
-from numpy import mat, void
+from numpy import void
 
 
 class NSequence:
@@ -42,7 +39,6 @@ class NSequence:
         try:
             return _numerator / _denominator
         except ZeroDivisionError:
-            print("ZERO SAFE")
             return None
 
     def power(self, base: Number, exponent: Number) -> float | None:
@@ -57,11 +53,9 @@ class NSequence:
             angle = cmath.phase(complex(base, 0))
             return cmath.exp(exponent * (cmath.log(magnitude) + 1j * angle))
         except ZeroDivisionError:
-            print("ZERO POWER")
             return None
         except ValueError:
-            print("VALUE POWER")
-            return None
+            return 0
 
     def f_1(self, _n: Number) -> float | None:
         """
@@ -90,6 +84,8 @@ class NSequence:
         Parameters:
         n (int or float): n
         """
+        if abs(_n) < 1e-8:
+            return None
         _numerator = _n + 1
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
@@ -103,6 +99,8 @@ class NSequence:
         Parameters:
         n (int or float): n
         """
+        if abs(_n) < 1e-8:
+            return None
         _numerator = 5
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
@@ -123,8 +121,6 @@ class NSequence:
         "f_4": f_4_string_tex,
     }
 
-    critical_points = {"f_3": [0], "f_4": [0]}
-
     def plot_function(
         self, _function_name: str, x_min: int, x_max: int, num_points=1000
     ) -> void:
@@ -134,13 +130,7 @@ class NSequence:
         """
         _function = getattr(self, _function_name)
         x_values = np.linspace(x_min, x_max, num_points)
-        # Map function names to their critical points
-
-        # Add the critical points for the given function
-        if _function_name in self.critical_points:
-            x_values = np.unique(
-                np.concatenate([x_values, self.critical_points[_function_name]])
-            )
+        x_values = np.unique(np.concatenate([x_values, [0]]))
         y_values = np.array([_function(_n) for _n in x_values], dtype=object)
 
         y_values[y_values is None] = np.nan
