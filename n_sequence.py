@@ -42,6 +42,7 @@ class NSequence:
         try:
             return _numerator / _denominator
         except ZeroDivisionError:
+            print("ZERO SAFE")
             return None
 
     def power(self, base: Number, exponent: Number) -> float | None:
@@ -56,6 +57,10 @@ class NSequence:
             angle = cmath.phase(complex(base, 0))
             return cmath.exp(exponent * (cmath.log(magnitude) + 1j * angle))
         except ZeroDivisionError:
+            print("ZERO POWER")
+            return None
+        except ValueError:
+            print("VALUE POWER")
             return None
 
     def f_1(self, _n: Number) -> float | None:
@@ -129,9 +134,12 @@ class NSequence:
         x_values = np.linspace(x_min, x_max, num_points)
         y_values = np.array([_function(_n) for _n in x_values], dtype=object)
 
-        filtered_data = [(x, y) for x, y in zip(x_values, y_values) if y is not None]
-        x_filtered, y_filtered = zip(*filtered_data)
-        plt.plot(x_filtered, y_filtered, label=_function_name)
+        y_values[y_values is None] = np.nan
+        y_real = np.real(y_values.astype(np.complex128))
+        y_imag = np.imag(y_values.astype(np.complex128))
+
+        plt.plot(x_values, y_real, label=f"{_function_name} - Real")
+        plt.plot(x_values, y_imag, label=f"{_function_name} - Complex")
         plt.xlabel(r"$n$")
         plt.ylabel(r"$f(n)$")
         plt.legend()
