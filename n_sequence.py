@@ -5,6 +5,9 @@ approximation on a limit.
 import cmath
 import math
 import os
+from ast import Num
+from cProfile import label
+from numbers import Number
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,31 +35,30 @@ class NSequence:
     f_4_string = "f_4"
 
     @staticmethod
-    def safely_divide(_numerator: float, _denominator: float):
+    def safely_divide(_numerator: Number, _denominator: Number):
         """
         Devides a given numerator by a given denominator and catches error cases.
         """
-        result = None
         try:
-            result = _numerator / _denominator
+            return _numerator / _denominator
         except ZeroDivisionError:
-            print("Error: Division by zero is not allowed.")
-            result = 0
+            return None
 
-        return result
-
-    def power(self, base, exponent) -> float:
+    def power(self, base: Number, exponent: Number) -> float | None:
         """
         Calculates the power of a given base by a given exponent.
         Useful for negative exponents.
         """
-        if exponent >= 0:
-            return math.pow(base, exponent)
+        if exponent == 0:
+            return 1
+        try:
+            magnitude = abs(base)
+            angle = cmath.phase(complex(base, 0))
+            return cmath.exp(exponent * (cmath.log(magnitude) + 1j * angle))
+        except ZeroDivisionError:
+            return None
 
-        denominator = math.pow(base, abs(exponent))
-        return self.safely_divide(1, denominator)
-
-    def f_1(self, _n) -> float:
+    def f_1(self, _n: Number) -> float | None:
         """
         Calculates a sequence on n. f_n = (2/3)^n\n
         Parameters:
@@ -67,7 +69,7 @@ class NSequence:
         _base = self.safely_divide(_numerator, _denominator)
         return self.power(_base, _n)
 
-    def f_2(self, _n) -> float:
+    def f_2(self, _n: Number) -> float | None:
         """
         Calculates a sequence on n. f_n = (n³/2^n)\n
         Parameters:
@@ -77,7 +79,7 @@ class NSequence:
         _denominator = self.power(2, _n)
         return self.safely_divide(_numerator, _denominator)
 
-    def f_3(self, _n) -> float:
+    def f_3(self, _n: Number) -> float | None:
         """
         Calculates a sequence on n. f_n = (n+1/n)^n\n
         Parameters:
@@ -86,9 +88,11 @@ class NSequence:
         _numerator = _n + 1
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
+        if _base is None:
+            return None
         return self.power(_base, _n)
 
-    def f_4(self, _n) -> float:
+    def f_4(self, _n: Number) -> float | None:
         """
         Calculates a sequence on n. f_n = (1+5/n)^n\n
         Parameters:
@@ -97,6 +101,8 @@ class NSequence:
         _numerator = 5
         _denominator = _n
         _base = self.safely_divide(_numerator, _denominator)
+        if _base is None:
+            return None
         return self.power(1 + _base, _n)
 
     fn_to_string_dict = {
@@ -121,11 +127,14 @@ class NSequence:
         """
         _function = getattr(self, _function_name)
         x_values = np.linspace(x_min, x_max, num_points)
-        y_values = [_function(_n) for _n in x_values]
+        y_values = np.array([_function(_n) for _n in x_values], dtype=object)
 
-        plt.plot(x_values, y_values)
+        filtered_data = [(x, y) for x, y in zip(x_values, y_values) if y is not None]
+        x_filtered, y_filtered = zip(*filtered_data)
+        plt.plot(x_filtered, y_filtered, label=_function_name)
         plt.xlabel(r"$n$")
         plt.ylabel(r"$f(n)$")
+        plt.legend()
         plt.title(self.latex_dict[_function_name])
         plt.savefig(
             os.path.join(

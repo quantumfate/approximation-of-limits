@@ -35,6 +35,30 @@
         "documentation": {}
     },
     {
+        "label": "Num",
+        "importPath": "ast",
+        "description": "ast",
+        "isExtraImport": true,
+        "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "label",
+        "importPath": "cProfile",
+        "description": "cProfile",
+        "isExtraImport": true,
+        "detail": "cProfile",
+        "documentation": {}
+    },
+    {
+        "label": "Number",
+        "importPath": "numbers",
+        "description": "numbers",
+        "isExtraImport": true,
+        "detail": "numbers",
+        "documentation": {}
+    },
+    {
         "label": "matplotlib.pyplot",
         "kind": 6,
         "isExtraImport": true,
